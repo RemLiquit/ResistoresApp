@@ -154,4 +154,23 @@ public class GamePlayerActivity extends AppCompatActivity {
         startActivity(intent);
         mediaPlayer.stop();
     }
+
+    @Override
+    protected void onPause() {
+        mediaPlayer.pause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mediaPlayer.start();
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        mediaPlayer.pause();
+        super.onStop();
+    }
+
 }
