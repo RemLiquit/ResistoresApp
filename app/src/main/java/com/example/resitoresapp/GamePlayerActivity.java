@@ -2,8 +2,10 @@ package com.example.resitoresapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import java.util.Random;
 public class GamePlayerActivity extends AppCompatActivity {
     TextView tvInfo;
     Integer [] botones;
+    MediaPlayer mediaPlayer ;
     int [] tablero = new int []{
             0,0,0,
             0,0,0,
@@ -40,6 +43,11 @@ public class GamePlayerActivity extends AppCompatActivity {
                 R.id.btn4,R.id.btn5,R.id.btn6,
                 R.id.btn7,R.id.btn8,R.id.btn9,
         };
+        // background music start
+        mediaPlayer = MediaPlayer.create(this, R.raw.sound);
+        mediaPlayer.start();
+        // background music end
+
     }
     public void ponerFicha (View v){
         if (estado == 0 && turno == 1){
@@ -138,5 +146,12 @@ public class GamePlayerActivity extends AppCompatActivity {
             tvInfo.setVisibility(View.VISIBLE);
             tvInfo.setText("Empate");
         }
+    }
+    // reload activity
+    public void reload(View v){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        mediaPlayer.stop();
     }
 }
